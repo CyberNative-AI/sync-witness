@@ -288,15 +288,19 @@ module.exports = class SyncWitness extends Plugin {
       origin: previous && previous.hash === hash ? previous.origin : null,
     };
     if (previous && previous.hash !== hash) Object.assign(entry, core.rememberVersion(previous, hash, Date.now(), this.settings));
-    const copies = this.referencedCopies();
+    // Notes are kept up to their own size limit; only attachments count against the shared space,
+    // so the scan of every stored copy runs for attachments only (it made a first inventory quadratic).
     let inUse = 0;
-    for (const c of copies.values()) if (!c.text) inUse += c.size;
-    if (copies.has(hash)) inUse -= size; // the same bytes are already stored: no extra space
-    // Temporary allowance: the version this replaces does not count while only this file holds it,
-    // because it is released once judged. If it becomes an incident's copy instead, the limit is
-    // enforced again as soon as the incident is recorded (makeRoom after record).
-    const prev = previous && previous.copied && previous.hash !== hash ? copies.get(previous.hash) : null;
-    if (prev && !prev.text && prev.holders.length === 1 && prev.holders[0] === 'current') inUse -= prev.size;
+    if (!core.isText(file.path)) {
+      const copies = this.referencedCopies();
+      for (const c of copies.values()) if (!c.text) inUse += c.size;
+      if (copies.has(hash)) inUse -= size; // the same bytes are already stored: no extra space
+      // Temporary allowance: the version this replaces does not count while only this file holds it,
+      // because it is released once judged. If it becomes an incident's copy instead, the limit is
+      // enforced again as soon as the incident is recorded (makeRoom after record).
+      const prev = previous && previous.copied && previous.hash !== hash ? copies.get(previous.hash) : null;
+      if (prev && !prev.text && prev.holders.length === 1 && prev.holders[0] === 'current') inUse -= prev.size;
+    }
     let keep = core.shouldKeepCopy(file.path, size, this.settings, inUse);
     if (!keep && !core.isText(file.path) && core.shouldKeepCopy(file.path, size, this.settings, 0)) keep = await this.makeRoom(size, false);
     if (keep) {
