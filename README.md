@@ -2,6 +2,8 @@
 
 Notices when a sync tool silently removes notes or rolls them back to an older version, tells you once, and restores the exact bytes.
 
+<img src="docs/alert.png" width="600" alt="A Sync Witness alert in Obsidian: 4 files were removed or lost content outside Obsidian. Three were removed and one went back to an older version. Copies of all four are safe, with Restore for each file and Restore all 4.">
+
 Sync tools sometimes apply an old state from another device: notes disappear, attachments go missing, or a note you just edited goes back to an earlier version. Often nobody notices for days. Sync Witness keeps a local record of your vault. When files vanish, are emptied or roll back without you doing it in Obsidian, it shows one clear alert and lets you restore each file, or the whole incident, byte for byte.
 
 ## What it does
