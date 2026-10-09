@@ -1,0 +1,239 @@
+/* Sync Witness — calm, legible, theme-aware. Amber means "look", never red: nothing is lost yet. */
+
+.sync-witness-modal {
+  --sw-amber: #c98a1b;
+  --sw-amber-soft: rgba(201, 138, 27, 0.12);
+  --sw-green: var(--color-green, #3f9f6b);
+  --sw-green-soft: rgba(63, 159, 107, 0.12);
+  width: min(620px, calc(100vw - 32px));
+}
+
+.sync-witness-modal .modal-content {
+  padding-top: 4px;
+}
+
+.sw-head {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sw-badge {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.sw-badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+.sw-badge.is-open {
+  background: var(--sw-amber-soft);
+  color: var(--sw-amber);
+}
+
+.sw-badge.is-clear {
+  background: var(--sw-green-soft);
+  color: var(--sw-green);
+}
+
+.sw-eyebrow {
+  font-size: var(--font-ui-smaller);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: var(--font-semibold);
+}
+
+.sw-title {
+  margin: 2px 0 0;
+  font-size: 1.35em;
+  line-height: 1.25;
+  font-weight: var(--font-bold);
+}
+
+.sw-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  margin-bottom: 14px;
+}
+
+.sw-meta span + span::before {
+  content: "·";
+  margin-right: 14px;
+  color: var(--text-faint);
+}
+
+.sw-callout {
+  border-radius: var(--radius-m);
+  padding: 12px 14px;
+  font-size: var(--font-ui-small);
+  line-height: 1.45;
+  color: var(--text-normal);
+}
+
+.sw-callout.is-safe {
+  background: var(--sw-green-soft);
+}
+
+.sw-callout.is-partial {
+  background: var(--sw-amber-soft);
+}
+
+.sw-callout-title {
+  font-weight: var(--font-semibold);
+  margin-bottom: 2px;
+}
+
+.sw-context {
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  line-height: 1.5;
+  margin: 12px 0 8px;
+}
+
+.sw-list {
+  max-height: min(46vh, 420px);
+  overflow-y: auto;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  margin: 8px 0 4px;
+}
+
+.sw-folder {
+  position: sticky;
+  top: 0;
+  background: var(--background-secondary);
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+  font-family: var(--font-monospace);
+  padding: 5px 12px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.sw-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  min-height: 44px;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.sw-item:last-child {
+  border-bottom: none;
+}
+
+.sw-item.is-link {
+  cursor: pointer;
+}
+
+.sw-item.is-link:hover {
+  background: var(--background-modifier-hover);
+}
+
+.sw-item-icon {
+  flex: none;
+  color: var(--text-muted);
+  display: grid;
+  place-items: center;
+}
+
+.sw-item-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sw-item.is-resolved .sw-item-icon {
+  color: var(--sw-green);
+}
+
+.sw-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.sw-item-name {
+  font-weight: var(--font-medium);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sw-item-detail {
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+.sw-kind {
+  font-weight: var(--font-semibold);
+  color: var(--sw-amber);
+}
+
+.sw-item.is-resolved .sw-item-detail {
+  color: var(--sw-green);
+}
+
+.sw-item-restore {
+  flex: none;
+}
+
+.sw-item-note {
+  flex: none;
+  color: var(--text-faint);
+  font-size: var(--font-ui-smaller);
+}
+
+.sw-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.sw-section {
+  margin-top: 16px;
+  font-size: var(--font-ui-smaller);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: var(--font-semibold);
+}
+
+.sw-activity {
+  font-size: var(--font-ui-smaller);
+  font-family: var(--font-monospace);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.sync-witness-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.sync-witness-status-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.sync-witness-status.is-alert {
+  color: #c98a1b;
+  font-weight: var(--font-semibold);
+}

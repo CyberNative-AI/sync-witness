@@ -1,0 +1,10 @@
+{
+  "id": "sync-witness",
+  "name": "Sync Witness",
+  "version": "0.1.0",
+  "minAppVersion": "1.14.4",
+  "description": "Notices when a sync tool silently removes notes or rolls them back to an older version, tells you once, and restores the exact bytes.",
+  "author": "CyberNative AI LLC",
+  "authorUrl": "https://cybernative.ai",
+  "isDesktopOnly": true
+}
