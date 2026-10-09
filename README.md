@@ -39,13 +39,13 @@ Obsidian's built-in File Recovery keeps periodic snapshots of notes you have cha
 
 ## Install
 
-Sync Witness is not in Obsidian's Community plugins directory yet. Until it is, install it by hand:
+In Obsidian, open **Settings → Community plugins**. If Restricted mode is on, select **Exit Restricted mode**. Select **Browse**, search for "Sync Witness", then select **Install** and **Enable**.
+
+If it is not listed there yet, install it by hand:
 
 1. Download `main.js`, `manifest.json` and `styles.css` from the latest release of this repository.
 2. In your vault, create the folder `.obsidian/plugins/sync-witness/` and put the three files in it. The `.obsidian` folder is hidden on most systems.
 3. In Obsidian, open **Settings → Community plugins**. If Restricted mode is on, select **Exit Restricted mode**. Next to "Installed plugins", select the reload icon (**Reload plugins**), then turn on **Sync Witness**.
-
-When the directory lists it, you can install it from **Settings → Community plugins → Browse** instead.
 
 Sync Witness records the vault on first start and only protects changes after that.
 
